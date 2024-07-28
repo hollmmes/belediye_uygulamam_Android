@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">Giresun Belediyesi</string>
+    <string name="todo">TODO</string>
+    <string name="test">test</string>
+    <string name="yayın">Canlı Yayın</string>
+    <string name="baskan">Başkan</string>
+    <string name="iletisim">İletişim</string>
+    <string name="eczane">Nöbetçi Eczane</string>
+    <string name="bel">E. Belediye</string>
+    <string name="vefat">Vefat İlanları</string>
+    <string name="alo">Bizi Arayın</string>
+
+    <string name="open_nav">Open Navigation Drawer</string>
+    <string name="close_nav">Close Navigation Drawer</string>
+
+    <string name="baskanb">FUAT KÖSE GİRESUN BELEDİYE BAŞKANI</string>
+    <string name="anket">Anket</string>
+    <string name="kamera">Çek-Gönder</string>
+    <string name="anasayfa">Anasayfa</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">ÇEK GÖNDER</string>
+    <string name="aciklama">
+    Fuat KÖSE, 1973 yılında Giresun’da doğdu.\n\n
+    \u0020\u0020İlk, orta ve lise eğitimini Giresun’da tamamladı. Erciyes Üniversitesi Yozgat Meslek Yüksekokulu Makine Bölümünden mezun oldu.\n\n
+    \u0020\u0020Fuat KÖSE, ilk siyasi deneyimini 1993 yılında Demokratik Sol Parti Merkez İlçe Yöneticisi olarak yaşadı.\n\n
+    \u0020\u00202019 yılında Cumhuriyet Halk Partisi’nden Giresun Belediye Meclis Üyeliği görevinde bulundu.\n\n
+    \u0020\u0020Giresun’da sektöründe öncü ve lider endüstriyel bir firmanın sahibi olarak iş dünyasında yer alan Fuat KÖSE evli ve iki çocuk babasıdır.\n\n
+    \u0020\u0020Madeni Sanatkârlar Odasında Yöneticilik, Giresun Sanayispor Kadın Futbol takımında Kulüp Başkanlığı yapmıştır. Giresun Sanayi Sitesi İşletme Kooperatifi Yöneticilik görevine devam etmektedir.\n\n
+    \u0020\u002031 Mart 2024 Mahalli İdareler Seçimlerinde, Cumhuriyet Halk Partisi’nin adayı olarak seçimleri kazanıp Giresun Belediye Başkanı olmuştur.
+</string>
+
+    <string name="aciklamauygulama">Bu uygulama Ege\nÜniversitesi Bilgisayar Programcısı mezunu \nTufancan DEMİRKILIÇ tarafından yapılmıştır.</string>
+</resources>

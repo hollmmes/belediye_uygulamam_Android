@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/bsknyrdmclari"
+            android:icon="@drawable/bsknyrdmclari"
+            android:title="BAŞKAN YARDIMCILARI" />
+        <item
+            android:id="@+id/vizyon"
+            android:icon="@drawable/ic_test"
+            android:title="KVKK" />
+        <item
+            android:id="@+id/meclis"
+            android:icon="@drawable/ic_kvkk"
+            android:title="MECLİS ÜYELERİ" />
+        <item
+            android:id="@+id/kardes"
+            android:icon="@drawable/ic_love"
+            android:title="KARDEŞ ŞEHİRLER" />
+        <item
+            android:id="@+id/duyuru"
+            android:icon="@drawable/ic_duyuru"
+            android:title="GÜNCEL DUYURULAR" />
+        <item
+            android:id="@+id/imar"
+            android:icon="@drawable/ic_imar"
+            android:title="İMAR PLANI DEĞİŞİKLİKLERİ" />
+        <item
+            android:id="@+id/hakkinda"
+            android:icon="@drawable/ic_hakkinda"
+            android:title="Uygulama hakkında" />
+    </group>
+</menu>

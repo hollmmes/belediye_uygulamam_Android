@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.girbel1.ui.HomeFragment"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_yayinFragment"
+            app:destination="@id/yayinFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_baskanFragment"
+            app:destination="@id/baskanFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_eczFragment"
+            app:destination="@id/eczFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_iletisimFragment"
+            app:destination="@id/iletisimFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_vefatFragment"
+            app:destination="@id/vefatFragment" />
+        <!-- Diğer fragment'lara olan geçişleri buraya ekleyin -->
+    </fragment>
+
+    <fragment
+        android:id="@+id/yayinFragment"
+        android:name="com.example.girbel1.ui.canliFragment"
+        tools:layout="@layout/fragment_canli" />
+
+    <fragment
+        android:id="@+id/baskanFragment"
+        android:name="com.example.girbel1.ui.baskanFragment"
+        tools:layout="@layout/fragment_baskan" />
+
+    <fragment
+        android:id="@+id/eczFragment"
+        android:name="com.example.girbel1.ui.eczFragment"
+        tools:layout="@layout/fragment_ecz" />
+
+    <fragment
+        android:id="@+id/iletisimFragment"
+        android:name="com.example.girbel1.ui.iletisimFragment"
+        tools:layout="@layout/fragment_iletisim" />
+
+    <fragment
+        android:id="@+id/vefatFragment"
+        android:name="com.example.girbel1.ui.VefatFragment"
+        tools:layout="@layout/fragment_vefat" />
+
+    <!-- Diğer fragment tanımlamaları buraya -->
+
+</navigation>
