@@ -13,6 +13,16 @@
         android:layout_height="100dp"
         android:background="@drawable/bg_view" />
 
+    <View
+        android:id="@+id/overlay_view"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignTop="@id/top_view"
+        android:layout_alignEnd="@id/top_view"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/bg_ataturk"
+        android:alpha="0.5" />
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="383dp"
@@ -23,7 +33,7 @@
         android:layout_marginStart="14dp"
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="11dp"
-        app:srcCompat="@drawable/logo"
+        app:srcCompat="@drawable/logowithouticon"
         android:contentDescription="@string/test" />
 
     <WebView

@@ -19,13 +19,6 @@ class hakkindaFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_hakkinda, container, false)
 
-        // Button 1
-        val contactButton1: Button = view.findViewById(R.id.contact_button1)
-        contactButton1.setOnClickListener {
-            val url = "https://www.linkedin.com/in/tufancan-demirkilic/"
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-            startActivity(intent)
-        }
 
 
         return view

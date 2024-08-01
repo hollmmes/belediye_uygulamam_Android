@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "415353426326",
+    "firebase_url": "https://girbel1-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "girbel1",
+    "storage_bucket": "girbel1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:415353426326:android:5e49de093541fdea16cdb7",
+        "android_client_info": {
+          "package_name": "com.example.girbel1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDrFAfdoC5CutGdtz3hBhn5RME7ykUkE8o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:415353426326:android:2d9e6729f5b127b816cdb7",
+        "android_client_info": {
+          "package_name": "com.example.girbel1.ui"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDrFAfdoC5CutGdtz3hBhn5RME7ykUkE8o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

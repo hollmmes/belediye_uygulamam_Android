@@ -8,28 +8,33 @@
     tools:context="ui.HomeFragment"
     android:background="@color/white">
 
-
     <View
         android:id="@+id/top_view"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:background="@drawable/bg_view"
+        android:background="@drawable/bg_view" />
 
-
-        />
+    <View
+        android:id="@+id/overlay_view"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignTop="@id/top_view"
+        android:layout_alignEnd="@id/top_view"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/bg_ataturk"
+        android:alpha="0.5" />
 
     <GridLayout
         android:layout_width="match_parent"
         android:layout_height="250dp"
-        android:layout_below="@+id/top_view"
+        android:layout_below="@id/haberler"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="0dp"
-        android:layout_marginTop="224dp"
+
         android:layout_marginEnd="0dp"
         android:columnCount="3"
         android:rowCount="3">
-
 
         <androidx.cardview.widget.CardView
             android:id="@+id/yayinCardView"
@@ -42,9 +47,7 @@
             android:layout_marginStart="12dp"
             android:layout_marginTop="12dp"
             android:layout_marginBottom="12dp"
-            app:cardCornerRadius="15dp"
-
-            >
+            app:cardCornerRadius="15dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -52,29 +55,26 @@
                 android:gravity="center"
                 android:orientation="vertical">
 
-
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_gravity="center_horizontal"
                     android:src="@drawable/ic_live"
-
-                    />
+                    app:tint="@color/green"/>
 
                 <TextView
                     android:layout_width="wrap_content"
+
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:text="@string/yayın"
-                    android:textColor="@color/black"
+                    android:textColor="@color/green"
                     android:textSize="18sp"
-                    android:textStyle="bold">
+                    android:textStyle="bold" />
 
-                </TextView>
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
-
 
         <androidx.cardview.widget.CardView
             android:id="@+id/baskanCardView"
@@ -93,26 +93,23 @@
                 android:gravity="center"
                 android:orientation="vertical">
 
-
                 <ImageView
                     android:layout_width="50dp"
+                    app:tint="@color/green"
                     android:layout_height="50dp"
                     android:layout_gravity="center_horizontal"
                     android:contentDescription="@string/test"
-                    android:src="@drawable/ic_person"
-
-                    />
+                    android:src="@drawable/ic_person" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:text="@string/baskan"
-                    android:textColor="@color/black"
+                    android:textColor="@color/green"
                     android:textSize="18sp"
-                    android:textStyle="bold">
+                    android:textStyle="bold" />
 
-                </TextView>
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
@@ -128,9 +125,7 @@
             android:layout_marginTop="12dp"
             android:layout_marginEnd="12dp"
             android:layout_marginBottom="12dp"
-            app:cardCornerRadius="15dp"
-
-            >
+            app:cardCornerRadius="15dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -138,26 +133,23 @@
                 android:gravity="center"
                 android:orientation="vertical">
 
-
                 <ImageView
+                    app:tint="@color/green"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_gravity="center_horizontal"
                     android:contentDescription="@string/test"
-                    android:src="@drawable/ic_contact"
-
-                    />
+                    android:src="@drawable/ic_contact" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:text="@string/iletisim"
-                    android:textColor="@color/black"
+                    android:textColor="@color/green"
                     android:textSize="18sp"
-                    android:textStyle="bold">
+                    android:textStyle="bold" />
 
-                </TextView>
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
@@ -181,26 +173,23 @@
                 android:gravity="center"
                 android:orientation="vertical">
 
-
                 <ImageView
+                    app:tint="@color/green"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_gravity="center_horizontal"
                     android:contentDescription="@string/test"
-                    android:src="@drawable/ic_phar"
-
-                    />
+                    android:src="@drawable/ic_phar" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:text="@string/eczane"
-                    android:textColor="@color/black"
+                    android:textColor="@color/green"
                     android:textSize="14sp"
-                    android:textStyle="bold">
+                    android:textStyle="bold" />
 
-                </TextView>
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
@@ -222,30 +211,26 @@
                 android:gravity="center"
                 android:orientation="vertical">
 
-
                 <ImageView
+                    app:tint="@color/green"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_gravity="center_horizontal"
                     android:contentDescription="@string/test"
-                    android:src="@drawable/ic_homebel"
-
-                    />
+                    android:src="@drawable/ic_homebel" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:text="@string/bel"
-                    android:textColor="@color/black"
+                    android:textColor="@color/green"
                     android:textSize="18sp"
-                    android:textStyle="bold">
+                    android:textStyle="bold" />
 
-                </TextView>
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
-
 
         <androidx.cardview.widget.CardView
             android:id="@+id/vefatCardView"
@@ -266,30 +251,26 @@
                 android:gravity="center"
                 android:orientation="vertical">
 
-
                 <ImageView
+                    app:tint="@color/green"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_gravity="center_horizontal"
                     android:contentDescription="@string/test"
-                    android:src="@drawable/ic_cemet"
-
-                    />
+                    android:src="@drawable/ic_cemet" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:text="@string/vefat"
-                    android:textColor="@color/black"
-                    android:textSize="15dp"
-                    android:textStyle="bold">
+                    android:textColor="@color/green"
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
 
-                </TextView>
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
-
 
     </GridLayout>
 
@@ -297,24 +278,35 @@
         android:id="@+id/imageView"
         android:layout_width="383dp"
         android:layout_height="89dp"
-        android:layout_alignBottom="@+id/top_view"
+        android:layout_alignBottom="@id/top_view"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="14dp"
-        android:layout_marginEnd="15dp"
         android:layout_marginBottom="11dp"
-        app:srcCompat="@drawable/logo"
-        android:contentDescription="@string/test"/>
+        app:srcCompat="@drawable/logowithouticon"
+        android:contentDescription="@string/test" />
 
-    <WebView
-        android:id="@+id/webView"
-        android:layout_width="wrap_content"
+    <FrameLayout
+        android:id="@+id/haberler"
+        android:layout_width="match_parent"
         android:layout_height="235dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="2dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="0dp" />
+        android:layout_below="@id/top_view"
+        android:layout_marginEnd="2dp"
+        android:layout_marginTop="2dp">
 
+        <WebView
+            android:id="@+id/webView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/rounded_webview" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/rounded_border" />
+
+    </FrameLayout>
 
 </RelativeLayout>

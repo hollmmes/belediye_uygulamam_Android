@@ -2,8 +2,6 @@ package com.example.girbel1.ui
 
 import android.app.Activity
 import android.content.Intent
-import android.graphics.Bitmap
-import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
@@ -11,54 +9,55 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.girbel1.R
-import java.io.ByteArrayOutputStream
-import java.io.IOException
-
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.storage.FirebaseStorage
+import java.text.SimpleDateFormat
+import java.util.*
 
 class cekgonderFragment : Fragment() {
 
-    private var param1: String? = null
-    private var param2: String? = null
-    private val PICK_IMAGE_REQUEST = 1
+    private lateinit var database: FirebaseDatabase
+    private lateinit var storage: FirebaseStorage
     private lateinit var imageView2: ImageView
-    private lateinit var nameEditText: EditText
-    private lateinit var contactEditText: EditText
-    private lateinit var issueEditText: EditText
+    private var imageUri: Uri? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+    companion object {
+        private const val PICK_IMAGE_REQUEST = 1
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_cekgonder, container, false)
 
-        val uploadPhotoButton: Button = view.findViewById(R.id.upload_photo)
-        val sendButton: Button = view.findViewById(R.id.send_button)
+        // Initialize Firebase Database and Storage references
+        database = FirebaseDatabase.getInstance()
+        storage = FirebaseStorage.getInstance()
+
+        // Get references to your form fields (EditText, CheckBox, etc.)
+        val nameEditText = view.findViewById<EditText>(R.id.name)
+        val tcNumberEditText = view.findViewById<EditText>(R.id.tc_number)
+        val addressEditText = view.findViewById<EditText>(R.id.address)
+        val contactEditText = view.findViewById<EditText>(R.id.contact)
+        val issueEditText = view.findViewById<EditText>(R.id.issue)
+        val kvkkCheckBox = view.findViewById<CheckBox>(R.id.kvkk_checkbox)
+        val uploadPhotoButton = view.findViewById<Button>(R.id.upload_photo)
+        val sendButton = view.findViewById<Button>(R.id.send_button)
         imageView2 = view.findViewById(R.id.imageView2)
-        nameEditText = view.findViewById(R.id.name)
-        contactEditText = view.findViewById(R.id.contact)
-        issueEditText = view.findViewById(R.id.issue)
 
         uploadPhotoButton.setOnClickListener {
             openGallery()
         }
 
         sendButton.setOnClickListener {
-            sendEmail()
+            sendData(nameEditText, tcNumberEditText, addressEditText, contactEditText, issueEditText, kvkkCheckBox)
         }
 
         return view
@@ -72,52 +71,94 @@ class cekgonderFragment : Fragment() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null && data.data != null) {
-            val imageUri: Uri? = data.data
-            try {
-                val bitmap: Bitmap = MediaStore.Images.Media.getBitmap(activity?.contentResolver, imageUri)
-                imageView2.setImageBitmap(bitmap)
-            } catch (e: IOException) {
-                e.printStackTrace()
-            }
+            imageUri = data.data
+            imageView2.setImageURI(imageUri)
         }
     }
 
-    private fun sendEmail() {
-        val recipient = "tufancanedu@gmail.com"  // Alıcı e-posta adresi
-        val subject = "Gönderim Formu"
-        val body = """
-            İsim Soyisim: ${nameEditText.text}
-            İletişim Adresi: ${contactEditText.text}
-            Sorun: ${issueEditText.text}
-        """.trimIndent()
+    private fun sendData(
+        nameEditText: EditText,
+        tcNumberEditText: EditText,
+        addressEditText: EditText,
+        contactEditText: EditText,
+        issueEditText: EditText,
+        kvkkCheckBox: CheckBox
+    ) {
+        val name = nameEditText.text.toString()
+        val tcNumber = tcNumberEditText.text.toString()
+        val address = addressEditText.text.toString()
+        val contact = contactEditText.text.toString()
+        val issue = issueEditText.text.toString()
+        val kvkkAccepted = kvkkCheckBox.isChecked
 
-        val intent = Intent(Intent.ACTION_SEND).apply {
-            type = "vnd.android.cursor.item/email"
-            putExtra(Intent.EXTRA_EMAIL, arrayOf(recipient))
-            putExtra(Intent.EXTRA_SUBJECT, subject)
-            putExtra(Intent.EXTRA_TEXT, body)
-            putExtra(Intent.EXTRA_STREAM, getImageUri())
-        }
+        // Tarihi 'dd.MM.yyyy' formatında al
+        val dateFormat = SimpleDateFormat("dd_MM_yyyy", Locale.getDefault())
+        val currentDate = dateFormat.format(Date())
 
-        startActivity(Intent.createChooser(intent, "E-posta ile gönder"))
-    }
+        // Anahtarı oluştur
+        val key = "${name.replace(" ", "_")}_$currentDate"
 
-    private fun getImageUri(): Uri? {
-        val bitmap = (imageView2.drawable as? BitmapDrawable)?.bitmap ?: return null
-        val bytes = ByteArrayOutputStream()
-        bitmap.compress(Bitmap.CompressFormat.PNG, 100, bytes)
-        val path = MediaStore.Images.Media.insertImage(activity?.contentResolver, bitmap, "title", null)
-        return Uri.parse(path)
-    }
+        // Veriyi hazırlama
+        val formData = mutableMapOf<String, Any>(
+            "name" to name,
+            "tc_number" to tcNumber,
+            "address" to address,
+            "contact" to contact,
+            "issue" to issue,
+            "kvkk_accepted" to kvkkAccepted
+        )
 
-    companion object {
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            cekgonderFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+        val reference = database.getReference("form_submissions")
+        val newReference = reference.child(key)
+
+        if (imageUri != null) {
+            uploadImage(key, formData)
+        } else {
+            newReference.setValue(formData)
+                .addOnSuccessListener {
+                    sendEmail(name, tcNumber, address, contact, issue)
                 }
+                .addOnFailureListener { error ->
+                    // Hata durumunu ele al
+                }
+        }
+    }
+
+    private fun uploadImage(key: String, formData: MutableMap<String, Any>) {
+        val storageRef = storage.reference.child("images/$key.jpg")
+        val uploadTask = storageRef.putFile(imageUri!!)
+
+        uploadTask.addOnSuccessListener {
+            storageRef.downloadUrl.addOnSuccessListener { uri ->
+                formData["image_url"] = uri.toString()
+                database.getReference("form_submissions").child(key).setValue(formData)
+                    .addOnSuccessListener {
+                        sendEmail(
+                            formData["name"] as String,
+                            formData["tc_number"] as String,
+                            formData["address"] as String,
+                            formData["contact"] as String,
+                            formData["issue"] as String
+                        )
+                    }
+                    .addOnFailureListener { error ->
+                        // Handle failure
+                    }
             }
+        }.addOnFailureListener { error ->
+            // Handle failure
+        }
+    }
+
+    private fun sendEmail(name: String, tcNumber: String, address: String, contact: String, issue: String) {
+        val emailIntent = Intent(Intent.ACTION_SEND).apply {
+            type = "plain/text"
+            putExtra(Intent.EXTRA_EMAIL, arrayOf("tfncan.28@gmail.com"))
+            putExtra(Intent.EXTRA_SUBJECT, "Çek Gönder")
+            putExtra(Intent.EXTRA_TEXT, "Name: $name\nTC Number: $tcNumber\nAddress: $address\nContact: $contact\nIssue: $issue")
+        }
+
+        startActivity(Intent.createChooser(emailIntent, "Send mail..."))
+        Toast.makeText(requireContext(), "Lütfen Ekranda Beliren Alanda Mail Uygulamanızı Seçiniz", Toast.LENGTH_SHORT).show()
     }
 }

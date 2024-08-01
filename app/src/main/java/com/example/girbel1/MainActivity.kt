@@ -12,6 +12,10 @@ import com.example.girbel1.ui.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
+import android.widget.ImageButton
+import androidx.core.view.GravityCompat
+import com.google.firebase.FirebaseApp
+import com.google.firebase.database.FirebaseDatabase
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,6 +23,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var cekgonderButton: FloatingActionButton
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var navigationView: NavigationView
+    private lateinit var openDrawerIcon: ImageButton
 
     private val homeFragment = HomeFragment()
     private val feedFragment = feedFragment()
@@ -30,17 +35,20 @@ class MainActivity : AppCompatActivity() {
     private val imarFragment = imarFragment()
     private val duyuruFragment = duyuruFragment()
     private val hakkindaFragment = hakkindaFragment()
+    private val deneme = deneme()
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        FirebaseDatabase.getInstance().setPersistenceEnabled(true)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        FirebaseApp.initializeApp(this)
         // Durum çubuğunun gizlenmesi
         supportActionBar?.hide()
 
         // Drawer ve NavigationView tanımlamaları
         drawerLayout = findViewById(R.id.drawer_layout)
         navigationView = findViewById(R.id.nav_view_drawer)
+        openDrawerIcon = findViewById(R.id.open_drawer_icon)
 
         // Bottom nav'ın tanımlanması
         navview = findViewById(R.id.nav_view)
@@ -51,6 +59,7 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.beginTransaction()
                 .add(R.id.navhostbottom, homeFragment, "HOME")
                 .add(R.id.navhostbottom, feedFragment, "FEED").hide(feedFragment)
+                .add(R.id.navhostbottom, deneme, "FEED").hide(deneme)
                 .add(R.id.navhostbottom, cekgonderFragment, "CEKGONDER").hide(cekgonderFragment)
                 .add(R.id.navhostbottom, baskanyrdmFragment, "BASKANYRDM").hide(baskanyrdmFragment)
                 .add(R.id.navhostbottom, vizyonFragment, "VIZYON").hide(vizyonFragment)
@@ -76,7 +85,7 @@ class MainActivity : AppCompatActivity() {
                     intent.data = Uri.parse("tel:4444028")
                     startActivity(intent)
                 }
-                R.id.nav_anket -> showFragment(feedFragment)
+                R.id.nav_anket -> showFragment(deneme)
             }
             true
         }
@@ -100,6 +109,11 @@ class MainActivity : AppCompatActivity() {
             }
             drawerLayout.closeDrawers()
             true
+        }
+
+        // İkona tıklama dinleyicisi ekleme
+        openDrawerIcon.setOnClickListener {
+            drawerLayout.openDrawer(GravityCompat.START)
         }
 
         enableEdgeToEdge()
