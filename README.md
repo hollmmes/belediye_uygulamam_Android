@@ -1,4 +1,4 @@
-Tasarımlar için [aley-nay](https://github.com/aley-nay) teşekkür ederim.
+Tasarımlarlar [aley-nay](https://github.com/aley-nay)'a aittir katkıları için teşekkür ederim. ^^
 
 Splash Screen görüntüsü. 
 
