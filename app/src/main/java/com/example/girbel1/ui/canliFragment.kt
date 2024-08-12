@@ -38,7 +38,7 @@ class canliFragment : Fragment() {
             })();
         """
 
-        webView.loadUrl("https://giresun.bel.tr/canli-yayin/")
+        webView.loadUrl("https://www.giresunkentkonseyi.org/giresun-canli-yayin/")
         webView.webViewClient = object : WebViewClient() {
             override fun onPageFinished(view: WebView?, url: String?) {
                 super.onPageFinished(view, url)

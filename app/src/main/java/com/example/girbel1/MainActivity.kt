@@ -85,7 +85,7 @@ class MainActivity : AppCompatActivity() {
                     intent.data = Uri.parse("tel:4444028")
                     startActivity(intent)
                 }
-                R.id.nav_anket -> showFragment(deneme)
+                R.id.nav_anket -> showFragment(feedFragment)
             }
             true
         }

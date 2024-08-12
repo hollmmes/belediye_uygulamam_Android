@@ -83,7 +83,9 @@ class cekgonderFragment : Fragment() {
         contactEditText: EditText,
         issueEditText: EditText,
         kvkkCheckBox: CheckBox
-    ) {
+    )
+
+    {
         val name = nameEditText.text.toString()
         val tcNumber = tcNumberEditText.text.toString()
         val address = addressEditText.text.toString()
@@ -92,8 +94,9 @@ class cekgonderFragment : Fragment() {
         val kvkkAccepted = kvkkCheckBox.isChecked
 
         // Tarihi 'dd.MM.yyyy' formatında al
-        val dateFormat = SimpleDateFormat("dd_MM_yyyy", Locale.getDefault())
+        val dateFormat = SimpleDateFormat("dd_MM_yyyy_HH:mm:ss", Locale.getDefault())
         val currentDate = dateFormat.format(Date())
+
 
         // Anahtarı oluştur
         val key = "${name.replace(" ", "_")}_$currentDate"
@@ -105,7 +108,8 @@ class cekgonderFragment : Fragment() {
             "address" to address,
             "contact" to contact,
             "issue" to issue,
-            "kvkk_accepted" to kvkkAccepted
+            "kvkk_accepted" to kvkkAccepted,
+            "timestamp" to currentDate,
         )
 
         val reference = database.getReference("form_submissions")

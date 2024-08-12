@@ -55,8 +55,8 @@
         <!-- Icon for opening the navigation drawer -->
         <ImageButton
             android:id="@+id/open_drawer_icon"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
+            android:layout_width="48dp"
+            android:layout_height="40dp"
             android:layout_marginStart="20dp"
             android:src="@drawable/ic_menu3"
             android:contentDescription="Open Drawer"
