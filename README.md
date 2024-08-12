@@ -1,5 +1,5 @@
 <div align="center">
-✨ Tasarım katkıları için aley-nay'a teşekkür ederim! ^^ ✨
+✨ Tasarım katkıları için [aley-nay](https://github.com/aley-nay)'a teşekkür ederim! ^^ ✨
 </div>
 
 <br>
